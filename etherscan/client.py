@@ -33,7 +33,7 @@ class BadRequest(ClientException):
 #  Assume user puts his API key in the api_key.json
 #  file under variable name "key"
 class Client(object):
-    dao_address = '0xbb9bc244d798123fde783fcc1c72d3bb8c189413'
+    dao_address = '0x33990122638b9132ca29c723bdf037f1a891a70c'
 
     # Constants
     PREFIX = 'https://api.etherscan.io/api?'
@@ -59,6 +59,9 @@ class Client(object):
     TAG = '&tag='
     BOOLEAN = '&boolean='
     INDEX = '&index='
+    FROM_BLOCK = '&fromBlock='
+    TO_BLOCK = '&toBlock='
+    TOPIC0 = '&topic0='
     API_KEY = '&apikey='
 
     url_dict = {}
@@ -67,7 +70,10 @@ class Client(object):
         self.http = requests.session()
         self.url_dict = collections.OrderedDict([
             (self.MODULE, ''),
+            (self.FROM_BLOCK, ''),
+            (self.TO_BLOCK, ''),
             (self.ADDRESS, ''),
+            (self.TOPIC0, ''),
             (self.OFFSET, ''),
             (self.PAGE, ''),
             (self.SORT, ''),
@@ -102,8 +108,7 @@ class Client(object):
 
     def build_url(self):
         self.url = self.PREFIX + ''.join(
-            [param + val if val else '' for param, val in
-             self.url_dict.items()])
+            [param + val if val else '' for param, val in self.url_dict.items()])
 
     def connect(self):
         # TODO: deal with "unknown exception" error
