@@ -2,13 +2,12 @@ import setuptools
 
 setuptools.setup(
     name='py_etherscan_api',
-    version='0.8.0',
-    packages=['examples', 'examples.stats', 'examples.tokens',
-              'examples.accounts', 'examples.blocks', 'examples.transactions',  'etherscan'],
-    url='https://github.com/corpetty/py-etherscan-api',
+    version='0.8.1',
+    packages=['etherscan'],
+    url='https://github.com/daboooooo/py-etherscan-api',
     license='MIT',
-    author='coreypetty',
-    author_email='petty.btc@gmail.com',
+    author='daboooooo',
+    author_email='dabo@dforce.network',
     description='Python Bindings to Etherscan.io API',
     install_requires=[
         'requests>=2.20.0',
